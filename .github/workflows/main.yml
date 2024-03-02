@@ -1,0 +1,31 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker Compose stack
+      run: docker-compose build
+
+    - name: Start the stack
+      run: docker-compose up -d
+      
+    - name: Run tests
+      run: echo "Running tests..."
+      
+    - name: Teardown
+      run: docker-compose down
+
+    - name: Log in to Docker Hub
+      run: echo ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+      
+    - name: Push the images to Docker Hub
+      run: docker-compose push
+
