@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics Results</title>
+</head>
+<body>
+    <h1>Analytics Results</h1>
+    <% if (statistics.length > 0) { %>
+        <ul>
+            <% statistics.forEach(function(stat) { %>
+                <li>Max: <%= stat.max %>, Min: <%= stat.min %>, Avg: <%= stat.avg %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No data available.</p>
+    <% } %>
+</body>
+</html>

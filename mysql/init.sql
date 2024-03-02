@@ -1,0 +1,7 @@
+CREATE DATABASE IF NOT EXISTS enter_data_db;
+USE enter_data_db;
+
+CREATE TABLE IF NOT EXISTS data_entries1 (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  data INT NOT NULL
+);
