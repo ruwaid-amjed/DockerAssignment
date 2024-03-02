@@ -16,6 +16,7 @@ services:
   # The Enter Data Web App service
   enter_data_webapp:
     build: ./EnterDataWebApp 
+    image: ruwaid/enter_data_webapp:latest
     ports:
       - "3000:3000" 
     depends_on:
@@ -39,6 +40,7 @@ services:
 
   analytics_service:
     build: ./AnalyticsService
+    image: ruwaid/analytics_service:latest
     ports:
       - "5000:5000"
     depends_on:
@@ -48,6 +50,7 @@ services:
 
   show_results_webapp:
     build: ./ShowResultsWebApp
+    image: ruwaid/show_results_webapp:latest
     ports:
       - "3002:3002"
     depends_on:
